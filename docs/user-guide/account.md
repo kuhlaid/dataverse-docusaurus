@@ -329,8 +329,7 @@ menu. In this tab, click "Recreate Token".
 
 ### Additional Information about API Tokens and Dataverse Software APIs
 
-The Dataverse Software APIs are documented in the
-[/api/index](./api/index) but the following sections
+The Dataverse Software APIs are documented in the `/api/index`{.interpreted-text role="doc"} but the following sections
 may be of particular interest:
 
 - `/api/getting-started`{.interpreted-text role="doc"}

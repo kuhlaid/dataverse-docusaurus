@@ -8,6 +8,8 @@ Sphinx can be a bit of a hassle to setup locally with no simple way to instantly
 
 The reason for Docusaurus was the built-in support for [algolia](https://www.algolia.com) site search tool and the ability to easily prop up a test environment on [Vercel](https://vercel.com) or similar cloud virtual hosting solutions without the need to create a coding environment locally (which can be pain for developers who simply wish to help with documentation and not have to worry about installing software dependencies which might not work with their computer setup).
 
+- The Docusaurus framework automatically checks for broken links in your documents when you build the code (whether you are building locally or letting Vercel build for you). This is great for quality assurance (as shown below). ![Vercel link check on build](/static/img/ReadMe.Vercel.LinkCheck.png)
+
 ## Using this code
 
 The easiest way to begin on a copy of this code is to fork this repository in GitHub then log into Vercel.com and create a new project using your forked repo. Vercel will build the code and setup a test site so you could simply make changes to your forked repository code in GitHub.com and see the changes in Vercel as you make code updates without the need to setup NodeJs and NPM on your local computer (but you could do that as well).

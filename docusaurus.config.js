@@ -75,15 +75,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: `About this site`,
             items: [
               {
-                label: 'User Guide',
-                to: '/user-guide/intro',
-              },
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Changelog',
+                to: '/docs/changelog',
               },
             ],
           },
@@ -105,7 +101,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built on ${new Date().toDateString()}) with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
