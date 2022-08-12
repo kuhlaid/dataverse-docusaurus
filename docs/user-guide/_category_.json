@@ -1,0 +1,8 @@
+{
+  "label": "User Guide",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "How everyday users work with the Dataverse"
+  }
+}
