@@ -101,7 +101,8 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built on ${new Date().toDateString()}) with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built 
+        with Docusaurus on ${new Date().toLocaleString()}.`,
       },
       prism: {
         theme: lightCodeTheme,
