@@ -4,8 +4,10 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+// With JSDoc @type annotations, IDEs can provide config autocompletion
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
+(
+  module.exports = {
   title: 'Dataverse Documentation',
   tagline: 'Open source research data repository software',
   url: 'http://localhost:3000/',
@@ -29,22 +31,31 @@ const config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/kuhlaid/dataverse-docusaurus.git/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/kuhlaid/dataverse-docusaurus.git/',
+          versions: {
+            current: {
+              label: 'current',
+            },
+          },
+          lastVersion: 'current',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/kuhlaid/dataverse-docusaurus.git/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/kuhlaid/dataverse-docusaurus/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -54,8 +65,14 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    //** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // algolia: {
+      //   appId: '[pull in from environment]',
+      //   apiKey: '[pull in from environment]',
+      //   indexName: 'docsearch',
+      //   contextualSearch: true,
+      // },
       navbar: {
         title: 'Dataverse Documentation',
         logo: {
@@ -64,6 +81,7 @@ const config = {
         },
         items: [
           {to: '/docs/category/user-guide', label: 'User Guide', position: 'left'},
+          {to: '/docs/category/admin-guide', label: 'Admin Guide', position: 'left'},
           {
             href: 'https://github.com/kuhlaid/dataverse-docusaurus.git',
             label: 'GitHub',
@@ -80,6 +98,10 @@ const config = {
               {
                 label: 'Changelog',
                 to: '/docs/changelog',
+              },
+              {
+                label: 'Terminology',
+                to: '/docs/terminology',
               },
             ],
           },
@@ -109,6 +131,5 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
-
-module.exports = config;
+}
+);

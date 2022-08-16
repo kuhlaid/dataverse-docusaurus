@@ -18,7 +18,7 @@ const sidebars = {
 
   // But you can create a sidebar manually
   // here we create a manual sidebar for the User Guide so we can add multiple layers and create a category link for the main User Guide so it links in the breadcrumb and shows references to the documents under it as a starting point
-  userGuideSidebar: [
+  mainNav: [
     {
       type: 'category',
       label: 'User Guide',
@@ -29,7 +29,19 @@ const sidebars = {
         slug: '/category/user-guide',
         keywords: ['user-guide'],
       },
-      items: ['user-guide/account', 'user-guide/find-data', 'user-guide/dataverse-management', 'user-guide/dataset-management'],
+      items: ['user-guide/account', 'user-guide/find-data', 'user-guide/dataverse-management', 'user-guide/dataset-management', 'user-guide/tabular-data-ingest', 'user-guide/metadata'],
+    },
+    {
+      type: 'category',
+      label: 'Admin Guide',
+      link: {
+        type: 'generated-index',
+        title: 'Admin Guide',
+        description: 'If you are an administrator or plan to be one for a Dataverse, then this is the documentation will help you learn the basics of managing your Dataverse.',
+        slug: '/category/admin-guide',
+        keywords: ['admin-guide'],
+      },
+      items: ['admin-guide/dashboard', 'admin-guide/external-tools', 'admin-guide/harvestclients', 'admin-guide/harvestserver', 'admin-guide/metadatacustomization'],
     },
   ],
 
