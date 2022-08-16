@@ -12,8 +12,10 @@ The reason for Docusaurus was the built-in support for [algolia](https://www.alg
 
 ## Using this code on Vercel
 
-The easiest way use this code (for your own project or to help contribute to this documentation) is to fork this repository in GitHub then log into Vercel.com and create a new project using your forked repo. Vercel can be used as a cloud testing environment, to help you avoid the need to setup NodeJs and NPM on your local computer (but you could do that as well). Vercel will build from your GitHub code repository and setup a test site so you could simply make changes to your forked repository code in GitHub.com, and see the changes in Vercel as you make code updates. Once you have the code deployed to Vercel from GitHub, a link to your test site on Vercel will added to your main repository page on GitHub.
+The easiest way use this code (for your own project or to help contribute to this documentation) is to fork this repository in GitHub then log into Vercel.com and create a new project using your forked repo. Vercel can be used as a cloud testing environment, to help you avoid the need to setup NodeJs and NPM on your local computer (but you could do that as well). Vercel will build from your GitHub code repository and setup a test site so you could simply make changes to your forked repository code in GitHub.com, and see the changes in Vercel as you make code updates. 
+
+Note, some of the application settings are set as environment variables. The `.env.example` file contains place-holder values for the environment. These variables will need to be added to your Vercel project since you do not want sensitive environment API keys or passwords published/embedded in your repository code. Once you have the code deployed to Vercel from GitHub, a link to your test site on Vercel will added to your main repository page on GitHub.
 
 ## Using the code locally
 
-For simplicity you can start with `npm install` once you have downloaded the source code and then run `npm start` to start a local server at `http://localhost:3000/`
+For simplicity you can start with `npm install` from within the source code directory once you have downloaded the source code and then run `npm start` to start a local server at `http://localhost:3000/`. You will need to copy the `.env.example` file and rename it `.env` and edit the values to match your repository and environment.
