@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+require('dotenv').config();   // required to use environment variables
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (
   module.exports = {
-  title: 'Dataverse Documentation',
+  title: process.env.NAVBAR_TITLE,
   tagline: 'Open source research data repository software',
   url: 'http://localhost:3000/',
   baseUrl: '/',
@@ -18,8 +18,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'kuhlaid', // Usually your GitHub org/user name.
-  projectName: 'dataverse-docusaurus', // Usually your repo name.
+  organizationName: process.env.GITHUB_USER, // Usually your GitHub org/user name.
+  projectName: process.env.GITHUB_REPO_NAME, // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -39,8 +39,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/kuhlaid/dataverse-docusaurus.git/',
+          editUrl: process.env.EDIT_URL,
           versions: {
             current: {
               label: 'current',
@@ -54,8 +53,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/kuhlaid/dataverse-docusaurus/tree/main/',
+          editUrl: process.env.EDIT_URL,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -68,13 +66,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     //** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // algolia: {
-      //   appId: '[pull in from environment]',
-      //   apiKey: '[pull in from environment]',
+      //   appId: process.env.ALGOLIA_APPID,
+      //   apiKey: process.env.ALGOLIA_APPKEY,
       //   indexName: 'docsearch',
       //   contextualSearch: true,
       // },
       navbar: {
-        title: 'Dataverse Documentation',
+        title: process.env.NAVBAR_TITLE,
         logo: {
           alt: 'Dataverse Logo',
           src: 'img/logo.svg',
@@ -83,7 +81,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           {to: '/docs/category/user-guide', label: 'User Guide', position: 'left'},
           {to: '/docs/category/admin-guide', label: 'Admin Guide', position: 'left'},
           {
-            href: 'https://github.com/kuhlaid/dataverse-docusaurus.git',
+            href: process.env.GITHUB_REPO_URL,
             label: 'GitHub',
             position: 'right',
           },

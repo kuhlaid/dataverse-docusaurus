@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.2] - future
 
 - [ ] additional documentation migrated from .rst format
+- [x] adding environment variable handler and variables to the docusaurus.config.js file
 - [x] enabling showLastUpdateTime and showLastUpdateAuthor
 - [x] fixing URLs to `Edit this page` links
 - [x] thought of possibly adding different versions of the Dataverse documentation since the UI has changed a bit in the newer versions of the Dataverse but will version the images instead so they can be updated as needed and running older versions of the software should be discouraged
