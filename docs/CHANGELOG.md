@@ -16,12 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] replace placeholder Docusaurus images
 - [ ] add short blurbs after the h1 header in the main doc pages so that the `category` pages (such as /docs/category/user-guide) will include blurbs in each of the links to the sections
 - [ ] need descriptions of acronyms `VDC` and `DVN` in the [/docs/user-guide/tabular-data-ingest.md] file
-- [ ] find better terminology for distinguishing between a user Dataverse project, **THE** Dataverse project and a Dataverse install (admin); should build a terminology doc that better explain the 
+- [ ] find better terminology for distinguishing between a user Dataverse project, **THE** Dataverse project and a Dataverse install (admin); should build a terminology doc that better explain the differences
 - [ ] explain the usefulness of using the `File` selection checkbox on a Dataverse homepage (it enables finding files by tag and other)
 - [ ] add Dataverse release versions to any image references applied to the docs so we are not polluting newer docs with old images that are no longer applicable
 - [ ] consider a process for updating and embedding tables such as the large tables in `/docs/admin-guide/metadatacustomization.md` which should have their source stored in Excel or Google Sheets or in HTML table format; trying to edit the large tables in this document is unwieldy
 - [ ] look into better documenting the metadata customization `/docs/admin-guide/metadatacustomization.md`
 - [ ] change references to `Appendix` to `Metadata Standards`
+- [ ] add https://docusaurus.io/docs/search#using-algolia-docsearch
 
 ## [0.0.2] - future
 

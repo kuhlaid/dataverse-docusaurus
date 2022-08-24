@@ -65,12 +65,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   themeConfig:
     //** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // algolia: {
-      //   appId: process.env.ALGOLIA_APPID,
-      //   apiKey: process.env.ALGOLIA_APPKEY,
-      //   indexName: 'docsearch',
-      //   contextualSearch: true,
-      // },
+      algolia: {
+        appId: process.env.ALGOLIA_APPID,
+        apiKey: process.env.ALGOLIA_APPKEY,
+        indexName: 'docsearch',
+        contextualSearch: true,
+      },
       navbar: {
         title: process.env.NAVBAR_TITLE,
         logo: {
