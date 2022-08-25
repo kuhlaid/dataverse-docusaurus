@@ -35,13 +35,13 @@ Next add the sitemap plugin `npm install --save @docusaurus/plugin-sitemap`
 
 The run a build of your app using `npm run build` (we need to do this instead of `npm run dev` because we need the builder to create a sitemap.xml file) then `npm run serve` command to test your build locally.
 
-In your [.env] file, 
+In your [.env] file add the following variables:
 
 ```env
 TYPESENSE_API_KEY=[replace with key]
 TYPESENSE_HOST=[replace with API cluster Node].a1.typesense.net
 TYPESENSE_PORT=443
-TYPESENSE_PROTOCOL=http2
+TYPESENSE_PROTOCOL=https
 ```
 
 ```bash
