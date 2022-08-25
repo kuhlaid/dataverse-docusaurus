@@ -22,11 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] consider a process for updating and embedding tables such as the large tables in `/docs/admin-guide/metadatacustomization.md` which should have their source stored in Excel or Google Sheets or in HTML table format; trying to edit the large tables in this document is unwieldy
 - [ ] look into better documenting the metadata customization `/docs/admin-guide/metadatacustomization.md`
 - [ ] change references to `Appendix` to `Metadata Standards`
-- [ ] add https://docusaurus.io/docs/search#using-algolia-docsearch
+
 
 ## [0.0.2] - future
 
 - [ ] additional documentation migrated from .rst format
+- [ ] adding Algolia search [https://docusaurus.io/docs/search#using-algolia-docsearch]
 - [x] adding environment variable handler and variables to the docusaurus.config.js file
 - [x] enabling showLastUpdateTime and showLastUpdateAuthor
 - [x] fixing URLs to `Edit this page` links
