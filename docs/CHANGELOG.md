@@ -23,7 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] look into better documenting the metadata customization `/docs/admin-guide/metadatacustomization.md`
 - [ ] change references to `Appendix` to `Metadata Standards`
 - [ ] additional documentation migrated from .rst format
+- [ ] configure TypeSense so it will search code blocks such as those containing `text/tab-separated-values`
+- [ ] document the feature of highlighting text in a document and selecting the TypeSense search box to automatically search the documentation for the selected text (without the need to enter it into the search field)
 
+## [0.0.3] - future
+
+- [ ] adding `article code` to the [typesense_scraper_config.json] file so the search tool will look in code blocks of the documents
+  
 ## [0.0.2] - 2022.08.25
 
 - [x] adding TypeSense search [https://docusaurus.io/docs/search#using-typesense-docsearch]
