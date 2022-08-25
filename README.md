@@ -20,49 +20,50 @@ Note, some of the application settings are set as environment variables. The `.e
 
 For simplicity you can start with `npm install` from within the source code directory once you have downloaded the source code and then run `npm start` to start a local server at `http://localhost:3000/`. You will need to copy the `.env.example` file and rename it `.env` and edit the values to match your repository and environment.
 
-## Using the TypeSense search scrapper in Windows
+## Using TypeSense and search scrapper on Windows
+
+### Issues
+
+This was a bit of a pain to setup, mainly from the indexing standpoint. I first tried the site scrapper (document search index) locally but the **scrapper did not like Docusaurus using port 3000 and did not allow indexing a local site running at specific ports**. What I decided to do was push the code to Vercel and use that publicly facing site to be my indexing site (since no port number needed to be specified to access the site) and then used [https://cloud.typesense.org] as the search host. Anyway, I'm not a big fan of this indexing process because it involves installing software locally (aside from Docker). Algolia did away with their local scraper and is all cloud now, so it relieves some headache on that front, but Algolia does not currently allow crawling on a testing basis. Also TypeSense does not have a 'document search' tool in their web console, so you can't tweak the search capabilities.
+
+### Configuration
 
 See help at [https://typesense.org/docs/guide/docsearch.html#run-the-scraper]. I am using Ubuntu v20 in WSL2 terminal for commands so your terminal commands may vary slightly.
 
-- Install jq using `sudo apt-get install jq` in WSL terminal
+Install some things locally to your WSL2 terminal
+
+- Install jq using `sudo apt-get install jq`
 - Install TypeSense `docker pull typesense/typesense:0.23.1`
   
-Then start TypeSense by entering the following command in a WSL2 terminal
+Inside this project folder we need to add some packages (this is only for new Docusaurus installs, but this repository has these plugins in place)
 
-Add the TypeSense search plugin `npm install docusaurus-theme-search-typesense@next --save`
+- Add the TypeSense search plugin `npm install docusaurus-theme-search-typesense@next --save`
+- Next add the sitemap plugin `npm install --save @docusaurus/plugin-sitemap`
 
-Next add the sitemap plugin `npm install --save @docusaurus/plugin-sitemap`
-
-The run a build of your app using `npm run build` (we need to do this instead of `npm run dev` because we need the builder to create a sitemap.xml file) then `npm run serve` command to test your build locally.
-
-In your [.env] file add the following variables:
+In your [.env] file add the following variables (we are assuming we have a TypeSense cloud account setup since local scrapping of data did not work in my case):
 
 ```env
-TYPESENSE_API_KEY=[replace with key]
+TYPESENSE_API_KEY=[replace with search API key on production and Admin API key when scrapping documents locally]
 TYPESENSE_HOST=[replace with API cluster Node].a1.typesense.net
 TYPESENSE_PORT=443
 TYPESENSE_PROTOCOL=https
 ```
 
 ```bash
-export TYPESENSE_API_KEY=xyz
+export TYPESENSE_ADMIN_API_KEY=[replace with your ADMIN API key and NOT search only API key]
 
 mkdir /tmp/typesense-data
 
 docker run -p 8108:8108 -v/tmp/typesense-data:/data typesense/typesense:0.23.1 \
-  --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors
+  --data-dir /data --api-key=$TYPESENSE_ADMIN_API_KEY --enable-cors
 ```
 
 Check that Typesense is running properly by opening another WSL2 terminal and enter `curl http://localhost:8108/health` which should return `{"ok":true}` if things are running properly.
 
-To run scrapper you MUST NOT specify the port to the site you are wanting to scrap. This is unfortunate because trying to run Docusaurus locally on port 80 will likely causing you problems.  
+To run scrapper you MUST NOT specify the port to the site you are wanting to scrap. This is unfortunate because trying to run Docusaurus locally on port 80 will likely causing you problems and I did not have any luck with this.  
 
-Finally run the site scrapper:
+Finally run the site scraper:
 
 ```bash
-// run in interactive mode
-docker run -it --env-file=.env -e "CONFIG=$(cat typesense_scrapper_config.json | jq -r tostring)" typesense/docsearch-scraper:latest
-
-// run in daemon mode
-docker run -d --env-file=.env -e "CONFIG=$(cat typesense_scrapper_config.json | jq -r tostring)" typesense/docsearch-scraper:latest
+docker run -d --env-file=.env -e "CONFIG=$(cat typesense_scraper_config.json | jq -r tostring)" typesense/docsearch-scraper:latest
 ```
