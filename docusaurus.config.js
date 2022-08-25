@@ -8,126 +8,139 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (
   module.exports = {
-  title: process.env.NAVBAR_TITLE,
-  tagline: 'Open source research data repository software',
-  url: 'http://localhost:3000/',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+    title: process.env.NAVBAR_TITLE,
+    tagline: 'Open source research data repository software',
+    url: 'http://localhost:3000/',
+    baseUrl: '/',
+    onBrokenLinks: 'throw',
+    onBrokenMarkdownLinks: 'warn',
+    favicon: 'img/favicon.ico',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: process.env.GITHUB_USER, // Usually your GitHub org/user name.
-  projectName: process.env.GITHUB_REPO_NAME, // Usually your repo name.
+    // GitHub pages deployment config.
+    // If you aren't using GitHub pages, you don't need these.
+    organizationName: process.env.GITHUB_USER, // Usually your GitHub org/user name.
+    projectName: process.env.GITHUB_REPO_NAME, // Usually your repo name.
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+    // Even if you don't use internalization, you can use this field to set useful
+    // metadata like html lang. For example, if your site is Chinese, you may want
+    // to replace "en" with "zh-Hans".
+    i18n: {
+      defaultLocale: 'en',
+      locales: ['en'],
+    },
 
-  presets: [
-    [
-      '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: {
-          path: 'docs',
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: process.env.EDIT_URL,
-          versions: {
-            current: {
-              label: 'current',
+    presets: [
+      [
+        '@docusaurus/preset-classic',
+        /** @type {import('@docusaurus/preset-classic').Options} */
+        ({
+          docs: {
+            path: 'docs',
+            sidebarPath: require.resolve('./sidebars.js'),
+            // Please change this to your repo.
+            // Remove this to remove the "edit this page" links.
+            editUrl: process.env.EDIT_URL,
+            versions: {
+              current: {
+                label: 'current',
+              },
             },
+            lastVersion: 'current',
+            showLastUpdateAuthor: true,
+            showLastUpdateTime: true,
           },
-          lastVersion: 'current',
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          blog: {
+            showReadingTime: true,
+            // Please change this to your repo.
+            // Remove this to remove the "edit this page" links.
+            editUrl: process.env.EDIT_URL,
+          },
+          theme: {
+            customCss: require.resolve('./src/css/custom.css'),
+          },
+        }),
+      ],
+    ],
+    themes: ['docusaurus-theme-search-typesense'],
+    themeConfig:
+      //** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+      ({
+        // algolia: {
+        //   appId: process.env.ALGOLIA_APPID,
+        //   apiKey: process.env.ALGOLIA_APPKEY,
+        //   indexName: process.env.ALGOLIA_INDEX,
+        //   contextualSearch: true,
+        // },
+        navbar: {
+          title: process.env.NAVBAR_TITLE,
+          logo: {
+            alt: 'Dataverse Logo',
+            src: 'img/logo.svg',
+          },
+          items: [
+            { to: '/docs/category/user-guide', label: 'User Guide', position: 'left' },
+            { to: '/docs/category/admin-guide', label: 'Admin Guide', position: 'left' },
+            {
+              href: process.env.GITHUB_REPO_URL,
+              label: 'GitHub',
+              position: 'right',
+            },
+          ],
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: process.env.EDIT_URL,
+        footer: {
+          style: 'dark',
+          links: [
+            {
+              title: `About this site`,
+              items: [
+                {
+                  label: 'Changelog',
+                  to: '/docs/changelog',
+                },
+                {
+                  label: 'Terminology',
+                  to: '/docs/terminology',
+                },
+              ],
+            },
+            {
+              title: 'Community',
+              items: [
+                {
+                  label: 'Stack Overflow',
+                  href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                },
+                {
+                  label: 'Discord',
+                  href: 'https://discordapp.com/invite/docusaurus',
+                },
+                {
+                  label: 'Twitter',
+                  href: 'https://twitter.com/docusaurus',
+                },
+              ],
+            },
+          ],
+          copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built 
+        with Docusaurus on ${new Date().toLocaleString()}.`,
         },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+        typesense: {
+          typesenseCollectionName: 'dataverse-docusaurus', // Replace with your own doc site's name. Should match the collection name in the scraper settings.
+          typesenseServerConfig: {
+            nodes: [
+              {
+                host: process.env.TYPESENSE_HOST,
+                port: process.env.TYPESENSE_PORT,
+                protocol: process.env.TYPESENSE_PROTOCOL,
+              },
+            ],
+            apiKey: process.env.TYPESENSE_API_KEY,
+          },
+        },
+        prism: {
+          theme: lightCodeTheme,
+          darkTheme: darkCodeTheme,
         },
       }),
-    ],
-  ],
-
-  themeConfig:
-    //** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      algolia: {
-        appId: process.env.ALGOLIA_APPID,
-        apiKey: process.env.ALGOLIA_APPKEY,
-        indexName: process.env.ALGOLIA_INDEX,
-        contextualSearch: true,
-      },
-      navbar: {
-        title: process.env.NAVBAR_TITLE,
-        logo: {
-          alt: 'Dataverse Logo',
-          src: 'img/logo.svg',
-        },
-        items: [
-          {to: '/docs/category/user-guide', label: 'User Guide', position: 'left'},
-          {to: '/docs/category/admin-guide', label: 'Admin Guide', position: 'left'},
-          {
-            href: process.env.GITHUB_REPO_URL,
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: `About this site`,
-            items: [
-              {
-                label: 'Changelog',
-                to: '/docs/changelog',
-              },
-              {
-                label: 'Terminology',
-                to: '/docs/terminology',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built 
-        with Docusaurus on ${new Date().toLocaleString()}.`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    }),
-}
+  }
 );
