@@ -61,7 +61,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         }),
       ],
     ],
-    themes: ['docusaurus-theme-search-typesense'],
+    themes: [
+      // ... Your other themes.
+      [
+        require.resolve("@easyops-cn/docusaurus-search-local"),
+        {
+          // ... Your options.
+          // `hashed` is recommended as long-term-cache of index file is possible.
+          hashed: true,
+        },
+      ],
+    ],
+    // themes: ['docusaurus-theme-search-typesense'],
     themeConfig:
       //** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
@@ -123,19 +134,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           ],
           copyright: `Copyright © ${new Date().getFullYear()} The Dataverse Project<br/>This documentation built 
         with Docusaurus on ${new Date().toLocaleString()}.`,
-        },
-        typesense: {
-          typesenseCollectionName: 'dataverse-docusaurus', // Replace with your own doc site's name. Should match the collection name in the scraper settings.
-          typesenseServerConfig: {
-            nodes: [
-              {
-                host: process.env.TYPESENSE_HOST,
-                port: process.env.TYPESENSE_PORT,
-                protocol: process.env.TYPESENSE_PROTOCOL,
-              },
-            ],
-            apiKey: process.env.TYPESENSE_API_KEY,
-          },
         },
         prism: {
           theme: lightCodeTheme,

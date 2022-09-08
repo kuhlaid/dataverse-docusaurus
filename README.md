@@ -60,10 +60,16 @@ docker run -p 8108:8108 -v/tmp/typesense-data:/data typesense/typesense:0.23.1 \
 
 Check that Typesense is running properly by opening another WSL2 terminal and enter `curl http://localhost:8108/health` which should return `{"ok":true}` if things are running properly.
 
-To run the site scraper/indexer you MUST NOT specify the port to the site you are wanting to index. This is unfortunate because trying to run Docusaurus locally on port 80 will likely causing you problems and I did not have any luck with this. So I had to run the site index against the Vercel hosted site.
+To run the site scraper/indexer you MUST NOT specify the port to the site you are wanting to index. This is unfortunate because trying to run Docusaurus locally on port 80 will likely cause you problems and I did not have any luck with this. As a work-around I ran the site index against the Vercel hosted site.
 
 Finally run the site indexer:
 
 ```bash
 docker run -d --env-file=.env -e "CONFIG=$(cat typesense_scraper_config.json | jq -r tostring)" typesense/docsearch-scraper:latest
 ```
+
+## Local search
+
+Using the [https://github.com/easyops-cn/docusaurus-search-local] document search since DocSearch is a pain to setup and does not do well with code blocks in documents.
+
+I tried installing @aldridged/docusaurus-plugin-lunr plugin but it didn't work. Broken plugin. Blah.

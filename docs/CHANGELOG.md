@@ -23,16 +23,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] look into better documenting the metadata customization `/docs/admin-guide/metadatacustomization.md`
 - [ ] change references to `Appendix` to `Metadata Standards`
 - [ ] additional documentation migrated from .rst format
-- [ ] configure TypeSense so it will search code blocks such as those containing `text/tab-separated-values`
-- [ ] document the feature of highlighting text in a document and selecting the TypeSense search box to automatically search the documentation for the selected text (without the need to enter it into the search field)
 
-## [0.0.3] - future
+## [0.0.3] - 2022.09.08
 
-- [ ] adding `article code` to the [typesense_scraper_config.json] file so the search tool will look in code blocks of the documents
+- [x] switching to local search since TypeSense has limitations on searching items in quotes and codeblocks and is a pain to setup with scraper being one of the main pain points
   
 ## [0.0.2] - 2022.08.25
 
-- [x] adding TypeSense search [https://docusaurus.io/docs/search#using-typesense-docsearch]
+- [x] adding TypeSense search [https://docusaurus.io/docs/search#using-typesense-docsearch]; the feature of highlighting text in a document and selecting the TypeSense search box to automatically search the documentation for the selected text (without the need to enter it into the search field) is a nice feature
 - [x] adding environment variable handler and variables to the docusaurus.config.js file
 - [x] enabling showLastUpdateTime and showLastUpdateAuthor
 - [x] fixing URLs to `Edit this page` links
@@ -47,3 +45,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Issues
 
 - Tried adding Algolia search [https://docusaurus.io/docs/search#using-algolia-docsearch] but they do not crawl your site unless it is production ready (no testing environments), thus the decision to use TypeSense for testing.
+- TypeSense has issues with searching items following quotes (or anything without a space)
