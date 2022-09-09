@@ -1,5 +1,7 @@
 # About this code
 
+[![CI Status](https://github.com/kuhlaid/dataverse-docusaurus/workflows/CI/badge.svg?event=push)](https://github.com/kuhlaid/dataverse-docusaurus/actions?query=workflow%3ACI)
+
 This repository was started in August of 2022 and uses [Docusaurus 2](https://docusaurus.io), a modern static website generator. The idea behind the repository was to help improve the documentation site of [Dataverse.org](https://dataverse.org) which at this time uses [OpenScholar](https://theopenscholar.com) and [Sphinx](https://www.sphinx-doc.org) with Sphinx being the main documentation tool for Dataverse.
 
 ## Why Docusaurus
